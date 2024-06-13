@@ -1,6 +1,6 @@
 # Installing PyTorch with Poetry
 
-Conditionally installing hardware-accelerated PyTorch with Poetry on different hardware using the same `pyproject.toml` [can be tricky](https://github.com/python-poetry/poetry/issues/64090). This repo serves as a quick lookup for the configuration file and installation commands.
+Conditionally installing hardware-accelerated PyTorch with Poetry on different hardware using the same `pyproject.toml` [can be tricky](https://github.com/python-poetry/poetry/issues/6409). This repo serves as a quick lookup for the configuration file and installation commands.
 
 + [Installing PyTorch with Poetry](#installing-pytorch-with-poetry)
     + [Installation Modes](#installation-modes)
