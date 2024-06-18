@@ -13,7 +13,7 @@
 
         # ===========================================
         # =========== START OF TORCH PART ===========
-        torch       = { version = "^2.2", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
+        torch       = { version = "^2.3", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
         torchvision = { version = "^0.18", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
 
     [tool.poetry.group.cuda]

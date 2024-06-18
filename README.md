@@ -13,26 +13,26 @@ Conditionally installing hardware-accelerated PyTorch with Poetry on different h
 
 | Command                              | Behavior                                                       |
 | ------------------------------------ | -------------------------------------------------------------- |
-| `poetry install`                     | Does not install PyTorch (import fails).                       |
-| `poetry install -E cpu`              | Installs PyTorch with CPU only.                                |
-| `poetry install -E cuda --with cuda` | Installs the CUDA variant of PyTorch. Expects NVIDIA hardware. |
+| `poetry install --sync`                     | Does not install PyTorch (import fails).                       |
+| `poetry install --sync -E cpu`              | Installs PyTorch with CPU only.                                |
+| `poetry install --sync -E cuda --with cuda` | Installs the CUDA variant of PyTorch. Expects NVIDIA hardware. |
 
 > [!NOTE]
-> If you're trying out both CPU and CUDA modes on a same machine/container, add the `--sync` flag to `poetry install` commands. This will make sure packages that are only in the previous configuration are removed from your current environment.
+> The `--sync` flag is optional, but useful for trying out both CPU and CUDA modes on a same machine/container, or if packages were removed. This will make sure packages that are only in the previous configuration are also removed from your current environment.
 
 >[!WARNING]
 > The example below is likely not what you want:
 > | Command                        | Behavior                                      |
 > | ------------------------------ | --------------------------------------------- |
-> | `poetry install -E cuda` | Actually installs the CPU variant of PyTorch without errors or warnings. |
+> | `poetry install --sync -E cuda` | Actually installs the CPU variant of PyTorch without errors or warnings. |
 
 ## Embedding the choice in a script
 
 ```bash
 if lspci | grep -i nvidia; then
-    poetry install --extras=cuda --with cuda
+    poetry install --sync --extras=cuda --with cuda
 else
-    poetry install --extras=cpu
+    poetry install --sync --extras=cpu
 fi
 ```
 
