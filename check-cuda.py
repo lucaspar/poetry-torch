@@ -7,6 +7,7 @@ from loguru import logger as log
 try:
     # pyright: ignore[reportMissingImports]
     import torch  # noqa
+    log.info(f"Torch imported: {torch.__version__}")
 except ImportError as e:
     log.error("torch could not be imported, exiting.")
     log.error(e)

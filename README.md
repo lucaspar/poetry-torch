@@ -11,8 +11,8 @@ Conditionally installing hardware-accelerated PyTorch with Poetry on different h
 
 ## Installation Modes
 
-| Command                              | Behavior                                                       |
-| ------------------------------------ | -------------------------------------------------------------- |
+| Command                                     | Behavior                                                       |
+| ------------------------------------------- | -------------------------------------------------------------- |
 | `poetry install --sync`                     | Does not install PyTorch (import fails).                       |
 | `poetry install --sync -E cpu`              | Installs PyTorch with CPU only.                                |
 | `poetry install --sync -E cuda --with cuda` | Installs the CUDA variant of PyTorch. Expects NVIDIA hardware. |
@@ -29,11 +29,14 @@ Conditionally installing hardware-accelerated PyTorch with Poetry on different h
 ## Embedding the choice in a script
 
 ```bash
-if lspci | grep -i nvidia; then
+#!/usr/bin/env bash
+# ...
+if lspci | grep -i nvidia &>/dev/null; then
     poetry install --sync --extras=cuda --with cuda
 else
     poetry install --sync --extras=cpu
 fi
+# ...
 ```
 
 ## Trying it out
