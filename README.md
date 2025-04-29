@@ -11,28 +11,28 @@ Conditionally installing hardware-accelerated PyTorch with Poetry on different h
 
 ## Installation Modes
 
-| Command                              | Behavior                                                       |
-| ------------------------------------ | -------------------------------------------------------------- |
-| `poetry install --sync`                     | Does not install PyTorch (import fails).                       |
-| `poetry install --sync -E cpu`              | Installs PyTorch with CPU only.                                |
-| `poetry install --sync -E cuda --with cuda` | Installs the CUDA variant of PyTorch. Expects NVIDIA hardware. |
-
-> [!NOTE]
-> The `--sync` flag is optional, but useful for trying out both CPU and CUDA modes on a same machine/container, or if packages were removed. This will make sure packages that are only in the previous configuration are also removed from your current environment.
+| Command                           | Behavior                                                       |
+| --------------------------------- | -------------------------------------------------------------- |
+| `poetry sync`                     | Does not install PyTorch (import fails).                       |
+| `poetry sync -E cpu`              | Installs PyTorch with CPU only.                                |
+| `poetry sync -E cuda --with cuda` | Installs the CUDA variant of PyTorch. Expects NVIDIA hardware. |
 
 >[!WARNING]
 > The example below is likely not what you want:
-> | Command                        | Behavior                                      |
-> | ------------------------------ | --------------------------------------------- |
-> | `poetry install --sync -E cuda` | Actually installs the CPU variant of PyTorch without errors or warnings. |
+>
+> | Command               | Behavior                                                                 |
+> | --------------------- | ------------------------------------------------------------------------ |
+> | `poetry sync -E cuda` | Actually installs the CPU variant of PyTorch without errors or warnings. |
+
+The [`sync` command](https://python-poetry.org/docs/cli#sync) behaves like the old `poetry install --sync`, and it's better suited to keep the current local state in sync with your lock file, as it will also remove dependencies missing from the lock. You probably want to use it instead of `poetry install` to avoid untracked outdated packages in most cases.
 
 ## Embedding the choice in a script
 
 ```bash
 if lspci | grep -i nvidia; then
-    poetry install --sync --extras=cuda --with cuda
+    poetry sync --extras=cuda --with cuda
 else
-    poetry install --sync --extras=cpu
+    poetry sync --extras=cpu
 fi
 ```
 

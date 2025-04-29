@@ -13,33 +13,33 @@
 
         # ===========================================
         # =========== START OF TORCH PART ===========
-        torch       = { version = "^2.3", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
-        torchvision = { version = "^0.18", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
+        torch       = { version = "^2.7", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
+        torchvision = { version = "^0.22", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
 
     [tool.poetry.group.cuda]
         optional = true
 
         # https://github.com/pytorch/pytorch/blob/main/RELEASE.md#release-compatibility-matrix
         [tool.poetry.group.cuda.dependencies]
-            torch       = { version = "^2.3", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
-            torchvision = { version = "^0.18", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
+            torch       = { version = "^2.7", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
+            torchvision = { version = "^0.22", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
 
-[tool.poetry.extras]
-    cpu  = ["torch", "torchvision"]
-    cuda = ["torch", "torchvision"]
+    [tool.poetry.extras]
+        cpu  = ["torch", "torchvision"]
+        cuda = ["torch", "torchvision"]
 
-[[tool.poetry.source]]
-    name     = "pytorch-cuda"
-    priority = "explicit"
-    url      = "https://download.pytorch.org/whl/cu121"
+    [[tool.poetry.source]]
+        name     = "pytorch-cuda"
+        priority = "explicit"
+        url      = "https://download.pytorch.org/whl/cu128"
 
-[[tool.poetry.source]]
-    name     = "pytorch-cpu"
-    priority = "explicit"
-    url      = "https://download.pytorch.org/whl/cpu"
+    [[tool.poetry.source]]
+        name     = "pytorch-cpu"
+        priority = "explicit"
+        url      = "https://download.pytorch.org/whl/cpu"
 
-    # ============ END OF TORCH PART ============
-    # ===========================================
+        # ============ END OF TORCH PART ============
+        # ===========================================
 
 [build-system]
     build-backend = "poetry.core.masonry.api"
