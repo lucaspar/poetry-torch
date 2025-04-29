@@ -8,8 +8,8 @@
 
     [tool.poetry.dependencies]
         loguru = "^0.7"
-        numpy  = "^1.26.4"
-        python = "^3.12"
+        numpy  = "^2.2"
+        python = "^3.13"
 
         # ===========================================
         # =========== START OF TORCH PART ===========
