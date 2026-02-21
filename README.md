@@ -10,6 +10,7 @@ Conditionally installing hardware-accelerated PyTorch with Poetry on different h
     + [Embedding the choice in a script](#embedding-the-choice-in-a-script)
     + [Trying it out](#trying-it-out)
     + [Post-install](#post-install)
+    + [Debugging](#debugging)
     + [Switching versions / upgrading](#switching-versions--upgrading)
         + [CUDA](#cuda)
 
@@ -54,15 +55,14 @@ poetry run python -c "import torch; print(torch.cuda.is_available())"
 
 ## Post-install
 
-Check the active packages:
+Remember to remove the `poetry.lock` file from .gitignore. It should be committed to the repository for consistent environments across machines.
+
+## Debugging
 
 ```bash
-poetry show
+poetry show --why
+poetry show --with cuda --why
 ```
-
-> [!NOTE]
-> Remember to remove the `poetry.lock` file from .gitignore. It should be committed to
-> the repository for consistent environments across machines.
 
 ## Switching versions / upgrading
 
