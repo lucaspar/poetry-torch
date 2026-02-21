@@ -1,28 +1,28 @@
 [tool.poetry]
     authors      = ["Lucas Parzianello <lucaspar@users.noreply.github.com>"]
-    description  = ""
+    description  = "A Poetry project for managing PyTorch dependencies with CPU and CUDA support."
     name         = "poetry-torch"
     package-mode = false
     readme       = "README.md"
     version      = "0.1.0"
 
     [tool.poetry.dependencies]
-        loguru = "^0.7"
-        numpy  = "^2.2"
-        python = "^3.13"
+        loguru = ">=0.7"
+        numpy  = ">=2.4"
+        python = ">=3.12,<3.15"
 
         # ===========================================
         # =========== START OF TORCH PART ===========
-        torch       = { version = "^2.7", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
-        torchvision = { version = "^0.22", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
+        torch       = { version = "^2.9", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
+        torchvision = { version = "^0.24", source = "pytorch-cpu", markers = "extra=='cpu' and extra!='cuda'" }
 
     [tool.poetry.group.cuda]
         optional = true
 
         # https://github.com/pytorch/pytorch/blob/main/RELEASE.md#release-compatibility-matrix
         [tool.poetry.group.cuda.dependencies]
-            torch       = { version = "^2.7", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
-            torchvision = { version = "^0.22", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
+            torch       = { version = "^2.9", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
+            torchvision = { version = "^0.24", source = "pytorch-cuda", markers = "extra=='cuda' and extra!='cpu'" }
 
     [tool.poetry.extras]
         cpu  = ["torch", "torchvision"]
@@ -31,7 +31,7 @@
     [[tool.poetry.source]]
         name     = "pytorch-cuda"
         priority = "explicit"
-        url      = "https://download.pytorch.org/whl/cu128"
+        url      = "https://download.pytorch.org/whl/cu130"
 
     [[tool.poetry.source]]
         name     = "pytorch-cpu"

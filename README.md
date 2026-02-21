@@ -2,10 +2,14 @@
 
 Conditionally installing hardware-accelerated PyTorch with Poetry on different hardware using the same `pyproject.toml` [can be tricky](https://github.com/python-poetry/poetry/issues/6409). This repo serves as a quick lookup for the configuration file and installation commands.
 
+> [!NOTE]
+> Dependencies updated to Torch 2.9, Python 3.12-3.14, and CUDA 13.0
+
 + [Installing PyTorch with Poetry](#installing-pytorch-with-poetry)
     + [Installation Modes](#installation-modes)
     + [Embedding the choice in a script](#embedding-the-choice-in-a-script)
     + [Trying it out](#trying-it-out)
+    + [Post-install](#post-install)
     + [Switching versions / upgrading](#switching-versions--upgrading)
         + [CUDA](#cuda)
 
@@ -47,6 +51,18 @@ or
 ```bash
 poetry run python -c "import torch; print(torch.cuda.is_available())"
 ```
+
+## Post-install
+
+Check the active packages:
+
+```bash
+poetry show
+```
+
+> [!NOTE]
+> Remember to remove the `poetry.lock` file from .gitignore. It should be committed to
+> the repository for consistent environments across machines.
 
 ## Switching versions / upgrading
 
