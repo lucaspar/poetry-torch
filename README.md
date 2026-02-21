@@ -7,7 +7,7 @@ Conditionally installing hardware-accelerated PyTorch with Poetry on different h
 
 + [Installing PyTorch with Poetry](#installing-pytorch-with-poetry)
     + [Installation Modes](#installation-modes)
-    + [Embedding the choice in a script](#embedding-the-choice-in-a-script)
+        + [Embedding the choice in a script](#embedding-the-choice-in-a-script)
     + [Trying it out](#trying-it-out)
     + [Post-install](#post-install)
     + [Debugging](#debugging)
@@ -31,7 +31,7 @@ Conditionally installing hardware-accelerated PyTorch with Poetry on different h
 
 The [`sync` command](https://python-poetry.org/docs/cli#sync) behaves like the old `poetry install --sync`, and it's better suited to keep the current local state in sync with your lock file, as it will also remove dependencies missing from the lock. You probably want to use it instead of `poetry install` to avoid untracked outdated packages in most cases.
 
-## Embedding the choice in a script
+### Embedding the choice in a script
 
 ```bash
 if lspci | grep -i nvidia; then
